@@ -42,6 +42,11 @@ public class HomeController : Controller
         return "Hello";
     }
 
+    public IActionResult WelcomeForm()
+    {
+        return View();
+    }
+    
     public IActionResult Welcome(string? name, int? age)
     {
         if (name is null || age is null)
@@ -49,7 +54,7 @@ public class HomeController : Controller
             return BadRequest();
             
         }
-        ViewBag.HelloMessage = "Hello {name}, age {age}"; 
+        ViewBag.HelloMessage = $"Hello {name}, age {age}"; 
         return View();
     }
 
