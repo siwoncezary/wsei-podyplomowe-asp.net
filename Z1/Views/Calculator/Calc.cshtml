@@ -1,0 +1,33 @@
+﻿@model Calculator
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Kalkulator</h2>
+<form method="post" asp-controller="Calculator" asp-action="Calc">
+    <div class="mb-3">
+        <label class="form-label" asp-for="X"></label>
+        <input class="form-control" asp-for="X"/>
+        <span class="text-danger" asp-validation-for="X"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="X"></label>
+        <select class="form-control" asp-for="Operator">
+            <option value="ADD">+</option>
+            <option value="SUB">-</option>
+            <option value="MUL">*</option>
+            <option value="DIV">/</option>
+        </select>
+        <span  class="text-danger" asp-validation-for="Operator"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Y"></label>
+        <input asp-for="Y"/>
+        <span asp-validation-for="Y"></span>
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Oblicz</button>
+    </div>
+</form>
