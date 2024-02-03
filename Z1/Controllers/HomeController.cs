@@ -47,14 +47,14 @@ public class HomeController : Controller
         return View();
     }
     
-    public IActionResult Welcome(string? name, int? age)
+    public IActionResult Welcome([FromQuery]WelcomeModel model)
     {
-        if (name is null || age is null)
+        if (!ModelState.IsValid)
         {
             return BadRequest();
             
         }
-        ViewBag.HelloMessage = $"Hello {name}, age {age}"; 
+        ViewBag.HelloMessage = model.Format(); 
         return View();
     }
 
