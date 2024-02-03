@@ -49,13 +49,12 @@ public class HomeController : Controller
     
     public IActionResult Welcome([FromQuery]WelcomeModel model)
     {
-        if (!ModelState.IsValid)
+        if (ModelState.IsValid)
         {
-            return BadRequest();
-            
+            ViewBag.HelloMessage = model.Format(); 
+            return View();
         }
-        ViewBag.HelloMessage = model.Format(); 
-        return View();
+        return View("WelcomeForm");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

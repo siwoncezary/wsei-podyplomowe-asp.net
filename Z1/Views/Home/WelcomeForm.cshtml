@@ -1,10 +1,13 @@
-﻿@{
+﻿@model WelcomeModel
+@{
     Layout = "_Layout";
 }
 
 <h2>Welcome Form</h2>
-<form method="get" action="/Home/Welcome">
-    <input type="text" name="name"/>
-    <input type="number" name="age"/>
+<form method="get" asp-controller="Home" asp-action="Welcome">
+    <input asp-for="Name"/>
+    <span asp-validation-for="Name"></span>
+    <input asp-for="Age"/>
+    <span asp-validation-for="Age"></span>
     <button type="submit">Wyślij</button>
 </form>
