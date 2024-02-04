@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Book>
+@{
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
@@ -6,4 +7,32 @@
 <h2>Lista książek</h2>
 <div>
     <a class="btn btn-primary" asp-controller="Book" asp-action="Create">Dodaj książkę</a>
+</div>
+<div>
+    <!--
+    Dodaj instrukcję if, aby tabela była generowana jeśli lista zawiera co najmniej 1 element
+    !-->
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Tytuł</th>
+            <th>Autor</th>
+            <th>Operacje</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var book in @Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">Więcej o ...</a>
+                    <a asp-controller="Book" asp-action="Edit" asp-route-id="@book.Id">Edytuj</a>
+                    <a asp-action="Delete" asp-controller="Book" asp-route-id="@book.Id">Usuń</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
 </div>
