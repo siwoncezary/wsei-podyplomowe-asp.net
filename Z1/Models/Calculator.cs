@@ -9,9 +9,10 @@ public class Calculator
     public Operators? Operator { get; set; }
 
     [Display(Name = "Liczba po lewej")]
-    public decimal X { get; set; }
+    public double X { get; set; }
+
     [Display(Name = "Liczba po prawej")]
-    public decimal Y { get; set; }
+    public double Y { get; set; }
 
     public String Op
     {

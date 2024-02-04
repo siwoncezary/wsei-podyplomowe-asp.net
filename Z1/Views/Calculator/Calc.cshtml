@@ -8,9 +8,9 @@
 <h2>Kalkulator</h2>
 <form method="post" asp-controller="Calculator" asp-action="Calc">
     <div class="mb-3">
-        <label class="form-label" asp-for="X"></label>
-        <input class="form-control" asp-for="X"/>
-        <span class="text-danger" asp-validation-for="X"></span>
+        <label class="form-label" asp-for="@Model.X"></label>
+        <input type="number" class="form-control" asp-for="@Model.X" step="0.01"/>
+        <span class="text-danger" asp-validation-for="@Model.X"></span>
     </div>
     <div class="mb-3">
         <label class="form-label" asp-for="X"></label>
@@ -23,9 +23,9 @@
         <span  class="text-danger" asp-validation-for="Operator"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Y"></label>
-        <input asp-for="Y"/>
-        <span asp-validation-for="Y"></span>
+        <label class="form-label" asp-for="Y"></label>
+        <input class="form-control" asp-for="Y" step="0.001"/>
+        <span class="text-danger" asp-validation-for="Y"></span>
     </div>
     <div class="mb-3">
         <button class="btn btn-primary" type="submit">Oblicz</button>
