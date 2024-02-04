@@ -1,0 +1,11 @@
+﻿@page
+@model Z2.Areas.Author.Model.Author
+@{
+    Layout = "_Layout";
+}
+
+<form method="post">
+    <input asp-for="FirstName"/>
+    <input asp-for="LastName"/>
+    <button type="submit">Zapisz</button>
+</form>

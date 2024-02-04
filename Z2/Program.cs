@@ -9,6 +9,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
+        builder.Services.AddRazorPages();
         builder.Services.AddControllersWithViews();
         builder.Services.AddSingleton<IBookService, ListBookService>();
 
@@ -28,7 +29,7 @@ public class Program
         app.UseRouting();
 
         app.UseAuthorization();
-
+        app.MapRazorPages();
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");

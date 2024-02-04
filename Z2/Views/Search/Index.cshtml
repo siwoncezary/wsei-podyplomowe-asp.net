@@ -1,0 +1,40 @@
+﻿@model SearchModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Wyszukaj książki</h2>
+<div>
+    <form method="get">
+        <div class="mb-3">
+            <label class="form-label" asp-for="AuthorQuery"></label>
+            <input class="form-control" asp-for="AuthorQuery"/>
+            <span class="text-danger" asp-validation-for="AuthorQuery"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" asp-for="TitleQuery"></label>
+            <input class="form-control" asp-for="TitleQuery"/>
+            <span class="text-danger" asp-validation-for="TitleQuery"></span>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary">Szukaj</button>
+        </div>
+    </form>
+</div>
+<div>
+    @if (Model.Result.Count() > 0)
+    {
+        <ul>
+            @foreach (var book in Model.Result)
+            {
+                <li><a asp-action="Details" asp-controller="Book" asp-route-id="@book.Id">@book.Title, @book.Author</a></li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Brak wyników</p>
+    }
+</div>
