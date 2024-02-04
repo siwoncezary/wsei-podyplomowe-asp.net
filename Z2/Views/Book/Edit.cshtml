@@ -1,0 +1,38 @@
+﻿@model Book
+
+@{
+    Layout = "_Layout";
+}
+<h2>Edytuj książkę</h2>
+<form method="post">
+    <input asp-for="Id"/>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Title"></label>
+        <input class="form-control" asp-for="Title"/>
+        <span class="text-danger" asp-validation-for="Title"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Author"></label>
+        <input class="form-control" asp-for="Author"/>
+        <span class="text-danger" asp-validation-for="Author"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="ISBN"></label>
+        <input class="form-control" asp-for="ISBN"/>
+        <span class="text-danger" asp-validation-for="ISBN"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Published"></label>
+        <input class="form-control" asp-for="Published"/>
+        <span class="text-danger" asp-validation-for="Published"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Pages"></label>
+        <input class="form-control" asp-for="Pages"/>
+        <span class="text-danger" asp-validation-for="Pages"></span>
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Zatwierdź</button>
+        <button class="btn btn-danger" type="reset">Wyczyść</button>
+    </div>
+</form>

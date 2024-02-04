@@ -21,7 +21,7 @@ namespace Z2.Controllers
         // GET: BookController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(_service.FindById(id));
         }
 
         // GET: BookController/Create, wyświetlanie formularza tworzenia nowej książki
@@ -46,43 +46,37 @@ namespace Z2.Controllers
         // GET: BookController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(_service.FindById(id));
         }
 
         // POST: BookController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Book model)
         {
-            try
+            if (ModelState.IsValid)
             {
+                _service.Edit(model);
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View();
+            
         }
 
         // GET: BookController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(_service.FindById(id));
         }
 
         // POST: BookController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Book model) 
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _service.Delete(id);
+            return RedirectToAction(nameof(Index));
+            
         }
     }
 }

@@ -2,8 +2,28 @@
 
 public class ListBookService: IBookService
 {
-    private readonly List<Book> _books = new List<Book>();
-    private int _id = 0;
+    private readonly List<Book> _books = new ()
+    {
+        new()
+        {
+            Id = 1, 
+            Title = "C#", 
+            Author = "Freeman", 
+            Pages = 1023, 
+            Published = new DateOnly(2023,10,10),
+            ISBN = "7382992243534"
+        },
+        new()
+        {
+            Id = 2, 
+            Title = "ASP.NET", 
+            Author = "Price", 
+            Pages = 7843, 
+            Published = new DateOnly(2023,11,23),
+            ISBN = "7382672243534"
+        }
+    };
+    private int _id = 2;
 
     public void Add(Book book)
     {
