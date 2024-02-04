@@ -1,11 +1,14 @@
 ﻿@page
-@model Z2.Areas.Author.Model.Author
+@model Z2.Areas.Author.Pages.Create;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "_Layout";
 }
 
-<form method="post">
-    <input asp-for="FirstName"/>
-    <input asp-for="LastName"/>
+<form method="post" >
+    <input asp-for="Input.FirstName" />
+    <span asp-validation-for="Input.FirstName"></span>
+    <input asp-for="Input.LastName"/>
+    <span asp-validation-for="Input.LastName"></span>
     <button type="submit">Zapisz</button>
 </form>
