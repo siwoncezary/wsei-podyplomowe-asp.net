@@ -8,7 +8,6 @@ public class ListBookService: IBookService
         {
             Id = 1, 
             Title = "C#", 
-            Author = "Freeman", 
             Pages = 1023, 
             Published = new DateOnly(2023,10,10),
             ISBN = "7382992243534"
@@ -17,7 +16,6 @@ public class ListBookService: IBookService
         {
             Id = 2, 
             Title = "ASP.NET", 
-            Author = "Price", 
             Pages = 7843, 
             Published = new DateOnly(2023,11,23),
             ISBN = "7382672243534"

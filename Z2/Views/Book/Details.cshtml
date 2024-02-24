@@ -9,7 +9,7 @@
 <h6>Tytuł</h6>
 <h3>@Model.Title</h3>
 <h6>Autor</h6>
-<h3>@Model.Author</h3>
+<h3>@Model.Author?.FirstName @Model.Author?.LastName @Model.Author?.Email</h3>
 <h6>Data wydania</h6>
 <h3>@Model.Published</h3>
 <h6>Liczba stron</h6>

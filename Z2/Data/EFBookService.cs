@@ -1,4 +1,5 @@
-﻿using Z2.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Z2.Models;
 
 namespace Z2.Data;
 
@@ -19,7 +20,7 @@ public class EFBookService: IBookService
 
     public IEnumerable<Book> FindAll()
     {
-        return _context.Books.ToList();
+        return _context.Books.Include(b => b.Author).ToList();
     }
 
     public void Delete(int id)
@@ -37,6 +38,8 @@ public class EFBookService: IBookService
 
     public Book? FindById(int id)
     {
-        return _context.Books.Find(id);
+        return _context.Books
+            .Include(b => b.Author)
+            .FirstOrDefault(b => b.Id == id);
     }
 }

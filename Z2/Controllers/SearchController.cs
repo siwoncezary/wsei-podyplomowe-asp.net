@@ -24,18 +24,18 @@ public class SearchController : Controller
                 .ToList();
         }
         // przypadek szukania wg autora
-        if (model.AuthorQuery is not null && model.TitleQuery is null)
-        {
-            model.Result = _service.FindAll()
-                .Where(book => book.Author.StartsWith(model.AuthorQuery))
-                .ToList();
-        }
-        if (model.AuthorQuery is not null && model.TitleQuery is not null)
-        {
-            model.Result = _service.FindAll()
-                .Where(book => book.Author.StartsWith(model.AuthorQuery) && book.Title.StartsWith(model.TitleQuery))
-                .ToList();
-        }
+        // if (model.AuthorQuery is not null && model.TitleQuery is null)
+        // {
+        //     model.Result = _service.FindAll()
+        //         .Where(book => book.Author.StartsWith(model.AuthorQuery))
+        //         .ToList();
+        // }
+        // if (model.AuthorQuery is not null && model.TitleQuery is not null)
+        // {
+        //     model.Result = _service.FindAll()
+        //         .Where(book => book.Author.StartsWith(model.AuthorQuery) && book.Title.StartsWith(model.TitleQuery))
+        //         .ToList();
+        // }
         return View(model);
     }
 }

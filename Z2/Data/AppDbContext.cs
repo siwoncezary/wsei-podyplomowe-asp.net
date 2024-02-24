@@ -23,18 +23,6 @@ public class AppDbContext: DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Book>().HasData(
-            new Book()
-            {
-                Id = 1, 
-                Title = "ASP.NET Core 3.0" , 
-                Author = "Adam Freeman", 
-                Published = new DateOnly(2022, 10,10),
-                ISBN = "334324233545",
-                Pages = 1023
-            }
-        );
-        
         // Dodaj dwóch autorów, pierwszy o danych z książki powyżej
         modelBuilder.Entity<Author>().HasData(
             new Author()
@@ -50,6 +38,18 @@ public class AppDbContext: DbContext
                 FirstName = "Robert",
                 LastName = "Martin",
                 Email = "unclebob@wsei.edu.pl"
+            }
+        );
+        
+        modelBuilder.Entity<Book>().HasData(
+            new Book()
+            {
+                Id = 1, 
+                Title = "ASP.NET Core 3.0" , 
+                AuthorId = 1,
+                Published = new DateOnly(2022, 10,10),
+                ISBN = "334324233545",
+                Pages = 1023
             }
         );
     }
