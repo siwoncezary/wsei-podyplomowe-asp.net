@@ -3,6 +3,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Z2.Models;
+// Dodaj klasę encji Author opisującej autora :
+// FirstName
+// LastName
+// Email
+
+// Dodaj w klasu AppDbContext zbiór authorów o nazwie Authors
+public class Author
+{
+    public int Id { get; set; }
+    
+    public string FirstName { get; set; }
+
+    public string LastName { get; set; }
+    
+    public string Email { get; set; }
+}
+
 
 [Table("books")]
 public class Book
