@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Z2.Models;
@@ -18,7 +19,7 @@ public class Author
     public string LastName { get; set; }
     
     public string Email { get; set; }
-    
+    [JsonIgnore]
     public List<Book> Books { get; set; }
 }
 
