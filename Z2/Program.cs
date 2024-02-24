@@ -1,3 +1,4 @@
+using Z2.Data;
 using Z2.Models;
 
 namespace Z2;
@@ -11,7 +12,8 @@ public class Program
         // Add services to the container.
         builder.Services.AddRazorPages();
         builder.Services.AddControllersWithViews();
-        builder.Services.AddSingleton<IBookService, ListBookService>();
+        builder.Services.AddDbContext<AppDbContext>();
+        builder.Services.AddTransient<IBookService, EFBookService>();
 
         var app = builder.Build();
 

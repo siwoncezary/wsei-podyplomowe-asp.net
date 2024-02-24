@@ -1,11 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Z2.Models;
 
+[Table("books")]
 public class Book
 {
     [HiddenInput]
+    [Key]
     public int Id { get; set; }
     [Required]
     [MinLength(3)]
@@ -24,5 +27,6 @@ public class Book
     public string ISBN { get; set; }
     [DataType(DataType.Date)]
     [Display(Name = "Data wydania")]
+    [Column("data_wydania")]
     public DateOnly Published { get; set; }
 }
