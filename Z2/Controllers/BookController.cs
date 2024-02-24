@@ -31,7 +31,7 @@ namespace Z2.Controllers
             ViewBag.Authors = _service.FindAllAuthors()
                 .Select(a => new SelectListItem()
                 {
-                    Text = $"{a.FirstName} {a.LastName}",
+                    Text = $"{a.FirstName} {a.LastName} (liczba książek: {a.Books[0].Author?.Books[1]})",
                     Value = $"{a.Id}",
                     Selected = a.Id == 1,
                 }).ToList();

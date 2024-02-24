@@ -45,6 +45,9 @@ public class EFBookService: IBookService
 
     public IEnumerable<Author> FindAllAuthors()
     {
-        return _context.Authors.ToList();
+        return _context.Authors
+            .Include(a => a.Books)
+            //.ThenInclude(b => b.Author)
+            .ToList();
     }
 }
