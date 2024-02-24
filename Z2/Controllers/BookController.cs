@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Z2.Models;
 
 namespace Z2.Controllers
@@ -27,6 +28,13 @@ namespace Z2.Controllers
         // GET: BookController/Create, wyświetlanie formularza tworzenia nowej książki
         public ActionResult Create()
         {
+            ViewBag.Authors = _service.FindAllAuthors()
+                .Select(a => new SelectListItem()
+                {
+                    Text = $"{a.FirstName} {a.LastName}",
+                    Value = $"{a.Id}",
+                    Selected = a.Id == 1,
+                }).ToList();
             return View();
         }
 

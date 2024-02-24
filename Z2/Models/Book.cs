@@ -32,10 +32,6 @@ public class Book
     [MaxLength(50)]
     [Display(Name = "Tytuł książki")]
     public string Title { get; set; }
-    [Required]
-    [MinLength(5)]
-    [MaxLength(50)]
-    [Display(Name = "Autor książki")]
     public int? AuthorId { get; set; }   // związek opcjonalny
     public Author? Author { get; set; }  // właściwość nawigacyjna tworzy związek jeden-do-wielu
     [Display(Name = "Liczba stron")]

@@ -11,9 +11,10 @@
         <span class="text-danger" asp-validation-for="Title"></span>
     </div>
     <div class="mb-3">
-        <label class="form-label" asp-for="Author"></label>
-        <input class="form-control" asp-for="Author"/>
-        <span class="text-danger" asp-validation-for="Author"></span>
+        <label class="form-label" asp-for="AuthorId"></label>
+        <select class="form-control" asp-for="AuthorId" asp-items="@ViewBag.Authors">
+        </select>
+        <span class="text-danger" asp-validation-for="AuthorId"></span>
     </div>
     <div class="mb-3">
         <label class="form-label" asp-for="ISBN"></label>

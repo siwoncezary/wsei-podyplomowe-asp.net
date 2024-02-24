@@ -59,4 +59,9 @@ public class ListBookService: IBookService
         return _books
             .FirstOrDefault(book => book.Id == id);
     }
+
+    public IEnumerable<Author> FindAllAuthors()
+    {
+        throw new NotImplementedException();
+    }
 }

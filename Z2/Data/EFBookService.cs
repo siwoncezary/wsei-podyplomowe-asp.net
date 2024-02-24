@@ -42,4 +42,9 @@ public class EFBookService: IBookService
             .Include(b => b.Author)
             .FirstOrDefault(b => b.Id == id);
     }
+
+    public IEnumerable<Author> FindAllAuthors()
+    {
+        return _context.Authors.ToList();
+    }
 }

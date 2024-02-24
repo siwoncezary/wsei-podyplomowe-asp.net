@@ -7,4 +7,6 @@ public interface IBookService
     void Delete(int id);
     void Edit(Book book);
     Book? FindById(int id);
+
+    IEnumerable<Author> FindAllAuthors();
 }
