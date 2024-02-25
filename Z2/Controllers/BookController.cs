@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Z2.Models;
 
 namespace Z2.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class BookController : Controller
     {
         private readonly IBookService _service;
@@ -14,6 +16,7 @@ namespace Z2.Controllers
         }
 
         // GET: BookController
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View(_service.FindAll());

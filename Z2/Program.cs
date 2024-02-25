@@ -10,18 +10,22 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        //var connectionString = builder.Configuration.GetConnectionString("AppDbContextConnection") ?? throw new InvalidOperationException("Connection string 'AppDbContextConnection' not found.");
 
         // Add services to the container.
-        builder.Services.AddRazorPages();
+        builder.Services.AddRazorPages();       // dodać
         builder.Services.AddControllersWithViews();
         builder.Services.AddDbContext<AppDbContext>();
-        builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 6;
-            })
-            .AddRoles<IdentityRole>()
-            .AddEntityFrameworkStores<AppDbContext>();
+        
+        builder.Services.AddDefaultIdentity<IdentityUser>(options =>        // dodać
+        {
+            options.SignIn.RequireConfirmedAccount = true;
+            options.Password.RequireDigit = false;
+            options.Password.RequiredLength = 6;
+        })
+        .AddRoles<IdentityRole>()
+        .AddEntityFrameworkStores<AppDbContext>();
+        
         // builder.Services.AddDbContext<AppDbContext>(options =>
         // {
         //     options.UseSqlite(builder.Configuration["Data:Connection"]);
@@ -44,7 +48,7 @@ public class Program
         app.UseRouting();
 
         app.UseAuthorization();
-        app.MapRazorPages();
+        app.MapRazorPages();               
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");

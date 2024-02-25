@@ -14,7 +14,7 @@ public class AppDbContext : IdentityDbContext<IdentityUser>
     public AppDbContext()
     {
         var folder = Environment.CurrentDirectory;
-        DbPath = Path.Join(folder, "./books.db");
+        DbPath = Path.Join(folder, "books.db");
     }
 
     // public AppDbContext(DbContextOptions<AppDbContext> options): base(options) {}
@@ -52,6 +52,14 @@ public class AppDbContext : IdentityDbContext<IdentityUser>
         adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "1234Abcd!");
         modelBuilder.Entity<IdentityUser>().HasData(
             adminUser
+        );
+        // skojarzenie użytkownika z jego rolami
+        modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+            new IdentityUserRole<string>()
+            {
+                UserId = adminId,
+                RoleId = adminRole.Id
+            }
         );
         // Dodaj dwóch autorów, pierwszy o danych z książki powyżej
         modelBuilder.Entity<Author>().HasData(
