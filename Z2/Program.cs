@@ -10,12 +10,15 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        //var connectionString = builder.Configuration.GetConnectionString("AppDbContextConnection") ?? throw new InvalidOperationException("Connection string 'AppDbContextConnection' not found.");
+        var connectionString = builder.Configuration["Data:ConnectionString"] ?? throw new InvalidOperationException("Connection string 'Data:ConnectionString' not found.");
 
         // Add services to the container.
         builder.Services.AddRazorPages();       // dodać
         builder.Services.AddControllersWithViews();
-        builder.Services.AddDbContext<AppDbContext>();
+        builder.Services.AddDbContext<AppDbContext>(options =>
+        {
+            options.UseSqlite(connectionString);
+        });
         
         builder.Services.AddDefaultIdentity<IdentityUser>(options =>        // dodać
         {
@@ -25,11 +28,6 @@ public class Program
         })
         .AddRoles<IdentityRole>()
         .AddEntityFrameworkStores<AppDbContext>();
-        
-        // builder.Services.AddDbContext<AppDbContext>(options =>
-        // {
-        //     options.UseSqlite(builder.Configuration["Data:Connection"]);
-        // });
         builder.Services.AddTransient<IBookService, EFBookService>();
 
         var app = builder.Build();

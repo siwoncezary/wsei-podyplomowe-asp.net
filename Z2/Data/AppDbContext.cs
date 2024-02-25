@@ -17,12 +17,12 @@ public class AppDbContext : IdentityDbContext<IdentityUser>
         DbPath = Path.Join(folder, "books.db");
     }
 
-    // public AppDbContext(DbContextOptions<AppDbContext> options): base(options) {}
+    public AppDbContext(DbContextOptions<AppDbContext> options): base(options) {}
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlite($"Data source={DbPath}");
-    }
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    // {
+    //     optionsBuilder.UseSqlite($"Data source={DbPath}");
+    // }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
