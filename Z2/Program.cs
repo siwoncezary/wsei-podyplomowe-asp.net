@@ -11,13 +11,17 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         var connectionString = builder.Configuration["Data:ConnectionString"] ?? throw new InvalidOperationException("Connection string 'Data:ConnectionString' not found.");
-
+        var connectionStringMS = builder.Configuration["Data:ConnectionStringMSQL"] ?? throw new InvalidOperationException("Connection string 'Data:ConnectionString' not found.");
         // Add services to the container.
         builder.Services.AddRazorPages();       // dodać
         builder.Services.AddControllersWithViews();
+        // builder.Services.AddDbContext<AppDbContext>(options =>
+        // {
+        //     options.UseSqlite(connectionString);
+        // });
         builder.Services.AddDbContext<AppDbContext>(options =>
         {
-            options.UseSqlite(connectionString);
+            options.UseSqlServer(connectionStringMS);
         });
         
         builder.Services.AddDefaultIdentity<IdentityUser>(options =>        // dodać
