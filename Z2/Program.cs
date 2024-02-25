@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Z2.Data;
 using Z2.Models;
 
@@ -13,6 +15,17 @@ public class Program
         builder.Services.AddRazorPages();
         builder.Services.AddControllersWithViews();
         builder.Services.AddDbContext<AppDbContext>();
+        builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 6;
+            })
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<AppDbContext>();
+        // builder.Services.AddDbContext<AppDbContext>(options =>
+        // {
+        //     options.UseSqlite(builder.Configuration["Data:Connection"]);
+        // });
         builder.Services.AddTransient<IBookService, EFBookService>();
 
         var app = builder.Build();
