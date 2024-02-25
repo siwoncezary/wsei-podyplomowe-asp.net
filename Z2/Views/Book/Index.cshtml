@@ -24,7 +24,7 @@
         @foreach (var book in @Model)
         {
             <tr>
-                <td>@book.Title</td>
+                <td>book.Title</td>
                 <td>@book.Author?.FirstName @book.Author?.LastName</td>
                 <td>
                     <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">Więcej o ...</a>
